@@ -1,0 +1,16 @@
+package ro.usv.rf;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	private static double[][] normalizeLearningSet(double[][] learningSet)
+	{
+	double[][] normalizedLearningSet = new double[learningSet.length][];
+	//.. enter your code here return normalizedLearningSet;
+	}
+
+}

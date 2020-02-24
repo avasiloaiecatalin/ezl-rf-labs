@@ -1,0 +1,23 @@
+package ro.usv.rf;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double[][] learningSet = FileUtils.readLearningSetFromFile(
+				"src/in.txt");
+		FileUtils.writeLearningSetToFile(
+				"src/out.csv",
+				normalizeLearningSet(learningSet));
+	}
+
+	private static double[][] normalizeLearningSet(double[][] learningSet) {
+		double[][] normalizedLearningSet = new double[learningSet.length][learningSet[0].length];
+		//.. enter your code here
+		
+		return normalizedLearningSet;
+	}
+}
