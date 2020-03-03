@@ -76,6 +76,10 @@ public class StatisticsUtils
 	protected static double calculateFeatureDispersion(Double[] feature, double featureWeightedAverage) {
 		double featureDispersion = 0.0;
 		// your code here
+		double columnAvg = 
+		for(int i=0; i<feature.length; i++) {
+		}
+		featureDispersion = (1.0/(feature.length-1))*
 		return featureDispersion;
 	}
 	
