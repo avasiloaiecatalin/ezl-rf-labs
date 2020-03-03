@@ -75,11 +75,15 @@ public class StatisticsUtils
 	
 	protected static double calculateFeatureDispersion(Double[] feature, double featureWeightedAverage) {
 		double featureDispersion = 0.0;
-		// your code here
-		double columnAvg = 
-		for(int i=0; i<feature.length; i++) {
+		
+		double sum = 0;
+		for(int k = 0; k<feature.length;k++) {
+			sum += Math.pow(feature[k] - featureWeightedAverage, 2);
 		}
-		featureDispersion = (1.0/(feature.length-1))*
+		
+		//numaratorul daca e intreg rez va fi nr intreg si de asta pt 1/... rez e 0
+		//punem 1.0 sau Double.valueOf(1)
+		featureDispersion = 1.0/(feature.length - 1) * sum;
 		return featureDispersion;
 	}
 	
