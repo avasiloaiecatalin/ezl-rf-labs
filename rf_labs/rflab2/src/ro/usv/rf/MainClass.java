@@ -93,10 +93,21 @@ public class MainClass {
 
 	}
 	
+	private static Double[] getFeature(double[][] learningSet, int featureIndex) {
+		int numberOfForms = learningSet.length;
+		
+		Double[] feature = new Double[numberOfForms];
+		for (int formIndex = 0; formIndex < numberOfForms; formIndex++)
+		{
+			feature[formIndex] = learningSet[formIndex][featureIndex];
+		}
+		return feature;
+	}
+	
 	private static double[][] autoscaleLearningSet (double[][] learningSet)
 	{
 		double[][] autoscaledLearningSet = new double[learningSet.length][];
-		//.. your code here
+		
 		return autoscaledLearningSet;
 	}
 
