@@ -43,14 +43,34 @@ public class StatisticsUtils
 
 	protected static double calculateFeatureWeightedAverage(Double[] feature, Double[] weights) {
 		double featureWeightedAverage = 0.0;
+		int mapSum = 0;
 		// your code here
-		return featureWeightedAverage;
+		Map<Double,Double> weightAverage = new HashMap<Double, Double>();
+		for (int j = 0; j < feature.length; j++) {
+			mapSum += weights[j];
+			if(weightAverage.containsKey(feature[j])) {
+				weightAverage.put(feature[j], weightAverage.get(feature[j])+weights[j]);
+			}else {
+				weightAverage.put(feature[j], weights[j]);
+			}
+		}
+		for(int j=0; j<feature.length; j++) {
+			featureWeightedAverage += feature[j]*weightAverage.get(feature[j]);
+		}
+		
+		return featureWeightedAverage / mapSum;
 	}
 	
 	protected static double calculateFrequencyOfOccurence(Map<Double, Integer> counterMap, double featureElement) {
-		double frequencyOfOccurence = 0.0;
-		// your code here
-		return frequencyOfOccurence;
+		int countFeature = 0;
+		double countElements = 0.0;
+		if(counterMap.containsKey(featureElement)) {
+			countFeature = counterMap.get(featureElement);
+			countElements = counterMap.values().stream().mapToDouble(x->x).sum();
+			return countFeature / countElements;
+		}else {
+			return 0;
+		}
 	}
 	
 	protected static double calculateFeatureDispersion(Double[] feature, double featureWeightedAverage) {

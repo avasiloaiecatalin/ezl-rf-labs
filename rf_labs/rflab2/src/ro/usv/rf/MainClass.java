@@ -8,7 +8,7 @@ public class MainClass {
 	
 	
 	public static void main(String[] args) {
-		double[][] learningSet = FileUtils.readLearningSetFromFile("in.txt");
+		double[][] learningSet = FileUtils.readLearningSetFromFile("src/in.txt");
 		
 		int numberOfForms = learningSet.length;
 		int numberOfFeatures = learningSet[0].length;
