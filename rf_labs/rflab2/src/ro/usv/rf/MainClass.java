@@ -88,9 +88,6 @@ public class MainClass {
 		
 		
 		FileUtils.writeLearningSetToFile("scaledSet.csv", autoscaleLearningSet(learningSet));
-		
-		
-
 	}
 	
 	private static Double[] getFeature(double[][] learningSet, int featureIndex) {
@@ -106,8 +103,30 @@ public class MainClass {
 	
 	private static double[][] autoscaleLearningSet (double[][] learningSet)
 	{
-		double[][] autoscaledLearningSet = new double[learningSet.length][];
-		
+		double[][] autoscaledLearningSet = new double[learningSet.length][learningSet.length];
+		double div = 0.0;
+		double sum = 0.0;
+		/*
+		for(int i=0; i<learningSet.length; i++) {
+			for(int j=0; j<learningSet[i].length; j++) {
+				div = learningSet[i][j] - StatisticsUtils.calculateFeatureAverage(getFeature(learningSet, j));
+				for(int k=0; k<learningSet[j].length; k++) {
+					sum += Math.pow(learningSet[k][j] - StatisticsUtils.calculateFeatureAverage(getFeature(learningSet, j)),2);
+				}
+				autoscaledLearningSet[i][j] = div / sum;
+			}
+		}
+				*/
+		for(int i=0; i<learningSet.length; i++) {
+			for(int j=0; j<learningSet[i].length; j++) {
+				Double[] fs = getFeature(learningSet, j);
+				div = learningSet[i][j] - StatisticsUtils.calculateFeatureAverage(fs);
+				for(int k=0; k<fs.length; k++) {
+					sum += Math.pow((learningSet[k][j] - StatisticsUtils.calculateFeatureAverage(fs)),2);
+				}
+				autoscaledLearningSet[i][j] = div / sum;
+			}
+		}
 		return autoscaledLearningSet;
 	}
 
