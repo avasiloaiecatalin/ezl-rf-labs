@@ -103,7 +103,7 @@ public class MainClass {
 	
 	private static double[][] autoscaleLearningSet (double[][] learningSet)
 	{
-		double[][] autoscaledLearningSet = new double[learningSet.length][learningSet.length];
+		double[][] autoscaledLearningSet = new double[learningSet.length][learningSet[0].length];
 		double div = 0.0;
 		double sum = 0.0;
 		/*
@@ -120,6 +120,7 @@ public class MainClass {
 		for(int i=0; i<learningSet.length; i++) {
 			for(int j=0; j<learningSet[i].length; j++) {
 				Double[] fs = getFeature(learningSet, j);
+				System.out.println("===> "+j);
 				div = learningSet[i][j] - StatisticsUtils.calculateFeatureAverage(fs);
 				for(int k=0; k<fs.length; k++) {
 					sum += Math.pow((learningSet[k][j] - StatisticsUtils.calculateFeatureAverage(fs)),2);
