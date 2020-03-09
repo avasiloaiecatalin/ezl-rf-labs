@@ -97,7 +97,9 @@ public class MainClass {
 		for (int formIndex = 0; formIndex < numberOfForms; formIndex++)
 		{
 			feature[formIndex] = learningSet[formIndex][featureIndex];
+			System.out.print(feature[formIndex]+" ");
 		}
+		System.out.println(" ");
 		return feature;
 	}
 	
