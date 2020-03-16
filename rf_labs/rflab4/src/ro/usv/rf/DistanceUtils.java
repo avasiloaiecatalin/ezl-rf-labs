@@ -19,13 +19,13 @@ public class DistanceUtils {
 	}
 	
 	protected static double[][] calculateDistanceMatrix(double[][] ls) {
-		double[][] geu = new double[ls.length][ls.length-1];
+		double[][] geu = new double[ls.length][ls.length];
 		double[] mainFeature;
 		DecimalFormat df = new DecimalFormat("#.##");
 		df.setRoundingMode(RoundingMode.FLOOR);
-		for(int i=0; i<ls.length-1; i++) {
+		for(int i=0; i<ls.length; i++) {
 			mainFeature = ls[i];
-			for(int j=i+1; j<ls.length-1; j++) {
+			for(int j=i+1; j<ls.length; j++) {
 				double[] feature = ls[j];
 				double x = calculateEuclidianDistance(mainFeature, feature);
 				geu[i][j] = geu[j][i] = new Double(df.format(x));
@@ -35,18 +35,18 @@ public class DistanceUtils {
 	}
 	
 	protected static void getClassForFeature(int x, double[][] ls, double[][] geu) {
-		int classx = 0;
 		double min;
-		min = geu[x][0];
-		for(int i=1; i<geu.length; i++) {
-			System.out.println("=>"+geu[x][i]+" "+ls[x][i]);
-			if(min > geu[x][i]) {
-				min = geu[x][i];
-				classx = i;
+		int featureClass = 0;
+		min = Double.MAX_VALUE;
+		for(int i=0; i<geu[x].length; i++) {
+			if(i!=x) {
+				if(min > geu[x][i]) {
+					min = geu[x][i];
+					featureClass = i;
+				}
 			}
 		}
-		System.out.println("class: "+ls[classx][ls.length-1]);
-		
+		System.out.println("Clasa este: "+ls[featureClass][ls[featureClass].length-1]);
 	}
 	
 	protected static double calculateCebisev(double[] x, double[] y) {
