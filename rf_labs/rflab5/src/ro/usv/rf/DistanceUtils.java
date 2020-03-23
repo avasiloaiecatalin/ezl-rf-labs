@@ -23,18 +23,31 @@ public class DistanceUtils {
 	protected static ArrayList<Place> calculateNV(ArrayList<Place> list, Place p, int n) {
 		ArrayList<Place> nv = new ArrayList<Place>();
 		Place p2;
-		DecimalFormat df2 = new DecimalFormat("#.##");
 		for(int i=0; i<n; i++) {
 			p2 = list.get(i);
-			p2.setDistanceToP(Double.valueOf(df2.format(calculateEuclidianDistance(p, p2))));
-			nv.add(p2); 
+			p2.setDistanceToP(calculateEuclidianDistance(p, p2));
+			nv.add(p2);
 		}
-		
 		Collections.sort(nv);
+
+		for(int i=n; i<list.size(); i++) {
+			p2 = list.get(i);
+			p2.setDistanceToP(calculateEuclidianDistance(p, p2));
+			if(nv.get(nv.size()-1).getDistanceToP() > p2.getDistanceToP()) {
+				nv.set(nv.size()-1, p2);
+				Collections.sort(nv);
+			}
+		}
 		
 		for(int i=0; i<nv.size(); i++) {
 			System.out.print(nv.get(i).getDistanceToP()+" ");
 		}
+		System.out.println("");
+		
+		for(int i=0; i<nv.size(); i++) {
+			System.out.print(nv.get(i).getCounty()+" ");
+		}
+		System.out.println("");
 		
 		return nv;
 	}

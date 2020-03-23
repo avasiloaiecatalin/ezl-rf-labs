@@ -23,10 +23,6 @@ public class MainClass {
 			p.setX("25.89");
 			p.setY("47.56");
 			a = DistanceUtils.calculateNV(learningSet, p, 9);
-			System.out.println("=========");
-			for(int i=0; i<a.size(); i++) {
-				System.out.println(a.get(i).getCounty());
-			}
 		} catch (USVInputFileCustomException e) {
 			System.out.println(e.getMessage());
 		} finally {
