@@ -1,6 +1,8 @@
 package ro.usv.rf;
 
-public class Place implements Comparable<Place>{
+import java.util.Comparator;
+
+public class Place implements Comparator<Place>{
 	private String county;
 	private Double x;
 	private Double y;
@@ -42,13 +44,14 @@ public class Place implements Comparable<Place>{
 		this.distanceToP = distanceToP;
 	}
 
+
 	@Override
-	public int compareTo(Place o) {
-		if(this.getDistanceToP() - o.getDistanceToP() == 0)
-			return 0;
-		if(this.getDistanceToP() - o.getDistanceToP() < 0)
+	public int compare(Place o1, Place o2) {
+		if(o1.getDistanceToP() > o2.getDistanceToP())
+			return 1;
+		if(o1.getDistanceToP() < o2.getDistanceToP())
 			return -1;
 		else
-			return 1;
+			return 0;
 	}
 }

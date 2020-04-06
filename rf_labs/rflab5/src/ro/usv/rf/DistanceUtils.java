@@ -5,83 +5,88 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Random;
 
 public class DistanceUtils {
-	//double[][] learningSet = FileUtils.readLearningSetFromFile("src/in.txt");
-	
-	protected static double euclidianDistance(double x1, double x2, double y1, double y2) {
-		return Math.sqrt(Math.pow(x1-y1, 2) + Math.pow(x2-y2, 2));
-	}
-	
 	protected static double calculateEuclidianDistance(Place x, Place y) {
 		double sum = 0.0;
-		sum = Math.pow(x.getX() - y.getX(),2)+Math.pow(x.getY(), y.getY());
+		sum = Math.pow(x.getX() - y.getX(),2)+Math.pow(x.getY() - y.getY(),2);
 		return Math.sqrt(sum);
 	}
 	
-	protected static ArrayList<Place> calculateNV(ArrayList<Place> list, Place p, int n) {
-		ArrayList<Place> nv = new ArrayList<Place>();
-		Place p2;
-		for(int i=0; i<n; i++) {
-			p2 = list.get(i);
+	protected static ArrayList<String> calculateNV(ArrayList<Place> list, Place p, int n) {
+		PlacesComparator pc = new PlacesComparator();
+		PriorityQueue<Place> nv = new PriorityQueue<Place>(pc);
+		
+		ArrayList<String> goodNV = new ArrayList<String>();
+		//System.out.println("my place: " + p.getX()+" "+p.getY());
+
+		for(int i=0; i<list.size(); i++) {
+
+			Place p2 = list.get(i);
 			p2.setDistanceToP(calculateEuclidianDistance(p, p2));
 			nv.add(p2);
 		}
-		Collections.sort(nv);
-
-		for(int i=n; i<list.size(); i++) {
-			p2 = list.get(i);
-			p2.setDistanceToP(calculateEuclidianDistance(p, p2));
-			if(nv.get(nv.size()-1).getDistanceToP() > p2.getDistanceToP()) {
-				nv.set(nv.size()-1, p2);
-				Collections.sort(nv);
-			}
-		}
+		//System.out.println(nv.size());
 		
+		for(int i=0; i<n; i++) {
+			goodNV.add(nv.remove().getCounty());
+		}
+		return goodNV;
+	}
+	
+	protected static String aproxCounty(ArrayList<String> nv) {
+		HashMap<String, Integer> app = new HashMap<String, Integer>();
 		for(int i=0; i<nv.size(); i++) {
-			System.out.print(nv.get(i).getDistanceToP()+" ");
-		}
-		System.out.println("");
-		
-		for(int i=0; i<nv.size(); i++) {
-			System.out.print(nv.get(i).getCounty()+" ");
-		}
-		System.out.println("");
-		
-		return nv;
-	}
-	
-	protected static double[][] calculateDistanceMatrix(double[][] ls) {
-		double[][] geu = new double[ls.length][ls.length];
-		double[] mainFeature;
-		DecimalFormat df = new DecimalFormat("#.##");
-		df.setRoundingMode(RoundingMode.FLOOR);
-		for(int i=0; i<ls.length; i++) {
-			mainFeature = ls[i];
-			for(int j=i+1; j<ls.length; j++) {
-				double[] feature = ls[j];
-				//double x = calculateEuclidianDistance(mainFeature, feature);
-				//geu[i][j] = geu[j][i] = new Double(df.format(x));
+			if(app.containsKey(nv.get(i))) {
+				int actual = app.get(nv.get(i))+1;
+				app.put(nv.get(i), actual);
+			}
+			else {
+				app.put(nv.get(i), 1);
 			}
 		}
-		return geu;
+		 
+		 int max = 0;
+		 String cityWithMax = "";
+		 for (Map.Entry<String,Integer> entry : app.entrySet())  {
+	            if(max < entry.getValue()) {
+	            	max = entry.getValue();
+	            	cityWithMax = entry.getKey();
+	            }
+	    } 
+		 
+		//System.out.println("City with max: "+cityWithMax);
+		return cityWithMax;
 	}
 	
-	
-	protected static void getClassForFeature(int x, double[][] ls, double[][] geu) {
-		double min;
-		int featureClass = 0;
-		min = Double.MAX_VALUE;
-		for(int i=0; i<geu[x].length; i++) {
-			if(i!=x) {
-				if(min > geu[x][i]) {
-					min = geu[x][i];
-					featureClass = i;
-				}
+	protected static int getAccuracy(int n, ArrayList<Place> givenList) {
+		int acc = 0;
+		ArrayList<Place> neededList = new ArrayList<Place>();
+		Random rand = new Random();
+		for(int i=0; i<100; i++) {
+			int randPlace = rand.nextInt(givenList.size());
+			neededList.add(givenList.get(randPlace));
+		}
+		
+		for(int i=0; i<neededList.size(); i++) {
+			String trueCounty = neededList.get(i).getCounty();
+			String aproxCounty = aproxCounty(calculateNV(givenList, neededList.get(i), n));
+			if(trueCounty == aproxCounty) {
+				acc++;
 			}
 		}
-		System.out.println("Clasa este: "+ls[featureClass][ls[featureClass].length-1]);
+		System.out.println("Acc for "+n+" ="+acc);
+		return acc;
 	}
 	
+	protected static void sortAcc() {
+		ArrayList<Integer> accArray = new ArrayList<Integer>();
+		//if()
+	}
 }
