@@ -9,8 +9,7 @@ public class MainClass {
 	
 	
 	public static void main(String[] args) {
-		double[][] learningSet;
-		//double[][] w;
+		double[][] learningSet; 
 		try {
 			learningSet = FileUtils.readLearningSetFromFile("src/in.txt");
 			int numberOfPatterns = learningSet.length;
@@ -53,12 +52,13 @@ public class MainClass {
 			
 			// keep here your pattern
 			
-			Pattern testp = new Pattern(4.0,5.0);
+			Pattern testp = new Pattern(0.0,5.0);
 			double actualFi = 0.0;
 			for(Double key:myMap.keySet()) {
 				ArrayList<Pattern> myMapActualList = myMap.get(key);
 				ArrayList<Double> wRow = DistanceUtils.getWRow(myMapActualList);
 				actualFi = DistanceUtils.getFi(wRow, testp);
+				System.out.println("=>"+actualFi);
 				if(actualFi > testp.getFi()) {
 					testp.setFi(actualFi);
 					testp.setPredictedClass(key);
@@ -99,7 +99,7 @@ public class MainClass {
 			}
 			*/
 			
-			Place testoras = new Place(25.33,45.44);
+			Place testoras = new Place(25.89,47.56);
 			double fiOras = 0.0;
 			for(String key:placesMap.keySet()) {
 				ArrayList<Place> myMapActualList = placesMap.get(key);

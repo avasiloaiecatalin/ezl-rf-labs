@@ -21,4 +21,5 @@
     <fullyQualifiedTypeName name="ro.usv.rf.Pattern"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="ro.usv.rf.DistanceUtils"/>
+    <fullyQualifiedTypeName name="rflab8.SetUtils"/>
 </qualifiedTypeNameHistroy>

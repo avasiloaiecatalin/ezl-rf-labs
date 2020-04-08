@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class DistanceUtils {
 	protected static ArrayList<Double> getWRow(ArrayList<Pattern> list) {
-		//ArrayList<ArrayList<Double>> w = new ArrayList<ArrayList<Double>>();
+		
 		ArrayList<Double> wRow = new ArrayList<Double>();
 		double avg = 0.0;
 		for (int j = 0; j < list.get(0).getFeatures().size(); j++) {
