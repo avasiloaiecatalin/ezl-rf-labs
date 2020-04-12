@@ -1,4 +1,4 @@
-package rflab8;
+package ro.usv.rf;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,12 +10,12 @@ public class SetUtils {
 
 	public static void prepareSets() {
 		String[][] learningSet;
-		try {
-			learningSet = FileUtils.readLearningSetFromFile("src/iris.csv");
+		
+			learningSet = FileUtils.readLearningSetFromFile("iris.csv");
 			int numberOfPatterns = learningSet.length;
 			int numberOfFeatures = learningSet[0].length-1;
 
-			System.out.println(String.format("The learning set has %s patters and %s features", numberOfPatterns,
+			System.out.println(String.format("The learning set has %s patters and %s features for each.", numberOfPatterns,
 					numberOfFeatures));
 			
 			Map<String, Integer> classesMap = new HashMap<String, Integer>();
@@ -86,14 +86,9 @@ public class SetUtils {
 				}
 			}
 			
-			FileUtils.writeLearningSetToFile("src/eval.txt", evaluationSet);
-			FileUtils.writeLearningSetToFile("src/train.txt", trainingSet);
+			FileUtils.writeLearningSetToFile("eval.txt", evaluationSet);
+			FileUtils.writeLearningSetToFile("train.txt", trainingSet);
 			
-		} catch (USVInputFileCustomException e) {
-			e.printStackTrace();
-		} finally {
-			System.out.println("Finished learning set operations");
-		}
 	}
 
 }

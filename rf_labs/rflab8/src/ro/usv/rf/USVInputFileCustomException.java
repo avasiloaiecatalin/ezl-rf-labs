@@ -1,4 +1,4 @@
-package rflab8;
+package ro.usv.rf;
 
 public class USVInputFileCustomException extends Exception {
 

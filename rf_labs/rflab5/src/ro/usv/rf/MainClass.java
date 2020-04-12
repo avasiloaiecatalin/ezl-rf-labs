@@ -8,7 +8,6 @@ public class MainClass {
 	
 	public static void main(String[] args) {
 		ArrayList<Place> learningSet;
-		double[][] geu;
 		try {
 			learningSet = FileUtils.readLearningSetFromFile("src/data.csv");
 			int numberOfPatterns = learningSet.size();

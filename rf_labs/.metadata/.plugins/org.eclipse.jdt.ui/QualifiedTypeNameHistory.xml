@@ -14,12 +14,17 @@
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="java.util.PriorityQueue"/>
     <fullyQualifiedTypeName name="ro.usv.rf.PlacesComparator"/>
-    <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="ro.usv.rf.Pattern"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="ro.usv.rf.DistanceUtils"/>
     <fullyQualifiedTypeName name="rflab8.SetUtils"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="ro.usv.rf.SetUtils"/>
+    <fullyQualifiedTypeName name="java.util.Comparator"/>
+    <fullyQualifiedTypeName name="ro.usv.rf.IrisComparator"/>
+    <fullyQualifiedTypeName name="ro.usv.rf.DistanceUtils"/>
+    <fullyQualifiedTypeName name="ro.usv.rf.FileUtilsForIris"/>
+    <fullyQualifiedTypeName name="ro.usv.rf.DistanceUtilsForW"/>
 </qualifiedTypeNameHistroy>
