@@ -18,13 +18,15 @@
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="ro.usv.rf.Pattern"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="rflab8.SetUtils"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="ro.usv.rf.SetUtils"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="ro.usv.rf.IrisComparator"/>
     <fullyQualifiedTypeName name="ro.usv.rf.DistanceUtils"/>
-    <fullyQualifiedTypeName name="ro.usv.rf.FileUtilsForIris"/>
     <fullyQualifiedTypeName name="ro.usv.rf.DistanceUtilsForW"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="ro.usv.rf.FileUtils"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="ro.usv.rf.FileUtilsForIris"/>
 </qualifiedTypeNameHistroy>
