@@ -19,7 +19,8 @@ public class MainClass {
 			for( Entry e:learningSet) {
 				System.out.println(e.displayFeatures());
 			}
-
+			Cassifier c1 = new Cassifier(learningSet);
+			c1.showEntries();
 	}
 
 }

@@ -15,12 +15,17 @@ public class MainClass {
 			ArrayList<String> a = new ArrayList<String>();
 			Grade p = new Grade();
 			// 25.89 47.56
-			for (int i = 1; i <= 17; i += 2) {
-				p.setNumeric("8.5");
+			int maxNN=0;
+			for (int i = 1; i <= 17; i++) {
+				p.setNumeric("5.75");
 				a = DistanceUtils.calculateNV(learningSet, p, i);
 				String ap = DistanceUtils.aproxCounty(a);
-				System.out.println(i+":"+ap);
+				int x = DistanceUtils.getAproxCountyNr(a);
+				System.out.println(i+":"+ap+" de "+x+" ori");
+				if(x<=i/2)
+					maxNN = i-2;
 			}
+			System.out.println("K max este: "+maxNN);
 			for (int i = 100; i >= 0; i--) {
 				// DistanceUtils.getAccuracy(i, learningSet);
 			}

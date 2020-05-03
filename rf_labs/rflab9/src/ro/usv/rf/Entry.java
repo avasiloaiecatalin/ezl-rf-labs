@@ -70,4 +70,14 @@ public class Entry{
 		display += ")";
 		return display;
 	}
+	
+	public String displayEntry() {
+		String display = "( ";
+		for(double d: this.features) {
+			display += (d+" ");
+		}
+		display += ") - ("+this.predictedClass+")";
+		return display;
+	}
+	
 }

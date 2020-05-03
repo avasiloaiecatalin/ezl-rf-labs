@@ -69,6 +69,36 @@ public class DistanceUtils {
 		return cityWithMax;
 	}
 	
+	protected static int getAproxCountyNr(ArrayList<String> nv) {
+		HashMap<String, Integer> app = new HashMap<String, Integer>();
+		for(int i=0; i<nv.size(); i++) {
+			if(app.containsKey(nv.get(i))) {
+				int actual = app.get(nv.get(i))+1;
+				app.put(nv.get(i), actual);
+			}
+			else {
+				app.put(nv.get(i), 1);
+			}
+		}
+		 
+		 int max = 0,max2=0;
+		 String cityWithMax = "";
+		 for (Map.Entry<String,Integer> entry : app.entrySet())  {
+	            if(max < entry.getValue()) {
+	            	max = entry.getValue();
+	            	cityWithMax = entry.getKey();
+	            }
+	            if(max2 < entry.getValue() && max2<max) {
+	            	max2 = entry.getValue();
+	            }
+	    } 
+		 
+		//System.out.println("City with max: "+cityWithMax);
+		return max;	
+	}
+	
+	
+	
 	protected static int getAccuracy(int n, ArrayList<Place> givenList) {
 		int acc = 0;
 		ArrayList<Place> neededList = new ArrayList<Place>();
